@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import {assets} from "../../assets/assets"
 
+// Orders component
 const Orders = ({url}) => {
 
   const [orders, setOrders] = useState([]);
@@ -19,6 +20,11 @@ const Orders = ({url}) => {
     else {
       toast.error("Error")
     }
+  }
+
+
+  const statusHandler = async(event, orderId) => {
+
   }
 
   useEffect(()=>{
