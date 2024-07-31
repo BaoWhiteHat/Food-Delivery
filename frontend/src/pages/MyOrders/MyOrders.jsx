@@ -1,14 +1,15 @@
 import React, {useContext, useState} from 'react'
 import './MyOrders.css'
 import { StoreContext } from '../../context/StoreContext';
-// import axios from 'axios';
+import axios from 'axios';
 // import assets from '../../assets/assets';
 import { useEffect } from 'react';
 // import img from '../../assets/parcel_icon.png'
 import { assets } from '../../assets/assets'
 
 
-function MyOrders() {
+
+const MyOrders = () => {
 
     const { url, token } = useContext(StoreContext);
     const [data, setData] = useState([]);
@@ -27,6 +28,7 @@ function MyOrders() {
     return (
         <div className='my-orders'>
             <h2>My Orders</h2>
+
             <div className="container">
                 {data.map((order, index) => {
                     return (
@@ -40,6 +42,12 @@ function MyOrders() {
                                     return item.name + " x " + item.quantity + ", ";
                                 }
                             })}</p>
+
+                            <p>${order.amount}.00</p>
+                            <p>Items: {order.items.length}</p>
+                            <p><span>&#x25cf;</span> <b>{order.status}</b></p>
+                            <button>Track Order</button>
+
                         </div>
                     );
                 })}
