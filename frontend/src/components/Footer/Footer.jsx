@@ -23,14 +23,13 @@ const Footer = () => {
         <div className='footer-content-left'>
           <img src={assets.logo} alt="Logo" />
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam commodi architecto veritatis
-            beatae cumque soluta, voluptatum quam vel distinctio similique laudantium, magni maxime sequi
-            sapiente consequuntur vero laboriosam! Placeat, mollitia.
+          Sua xe anh Tuan is your trusted destination for all your motorbike parts needs. 
+          With our expertise and commitment to customer satisfaction, we ensure you find the perfect parts to suit your motorcycle. 
           </p>
           <div className="footer-social-icons">
-            <img src={assets.facebook_icon} alt="Facebook" />
-            <img src={assets.twitter_icon} alt="Twitter" />
-            <img src={assets.linkedin_icon} alt="LinkedIn" />
+            <img href="https://www.facebook.com/profile.php?id=100030964275189" src={assets.facebook_icon} alt="Facebook" />
+            <img href="#" src={assets.twitter_icon} alt="Twitter" />
+            <img href="https://www.linkedin.com/in/qu%E1%BB%91c-b%E1%BA%A3o-l%C3%AA-345535292/" src={assets.linkedin_icon} alt="LinkedIn" />
           </div>
         </div>
 
@@ -47,13 +46,13 @@ const Footer = () => {
         <div className="footer-content-right">
           <h2>GET IN TOUCH</h2>
           <ul>
-            <li>+1-212-456-7890</li>
-            <li>contact@tomato.com</li>
+            <li>0938-0305-39</li>
+            <li>23560003@gmail.com</li>
           </ul>
         </div>
       </div>
       <hr />
-      <p className='footer-copyright'>Copyright 2024 Tomato.com - All Right Reserved</p>
+      <p className='footer-copyright'>Copyright 2024 Sua xe anh Tuan - All Right Reserved</p>
     </div>
   );
 }

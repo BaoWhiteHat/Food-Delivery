@@ -50,7 +50,7 @@ const Add = ({url}) => {
 
   return (
     <div className='page-add'>
-        <form className='flex-col' onSubmit={onSubmitHandler}>
+        <form className='All-element flex-col' onSubmit={onSubmitHandler}>
             <div className="add-img-upload flex-col">
                 <p className='img-upload'> 1. Upload Image</p>
                 <label htmlFor="image">
@@ -63,7 +63,7 @@ const Add = ({url}) => {
                 <input onChange={onChangeHandler} value={data.name} type="text" name='name' placeholder='Type here' />
             </div>
             <div className="add-product-description fex-col">
-                <p className='desc'> 3. Product description</p>
+                <p className='product-desc'> 3. Product description</p>
             <textarea onChange={onChangeHandler} value={data.description} name='description' rows="6" placeholder='Write content here' required></textarea>
             </div>
             <div className="add-category-price">

@@ -57,7 +57,7 @@ const Orders = ({ url }) => {
   }, []);
 
   return (
-    <div className='add'>
+    <div className='order-add'>
       <h3>Order Page</h3>
       <div className='order-list'>
         {orders.map((order) => (

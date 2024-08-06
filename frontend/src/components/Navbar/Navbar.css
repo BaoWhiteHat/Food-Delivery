@@ -20,7 +20,13 @@
 }
 
 .navbar a:hover {
-    color: #FF5733; 
+    color: #FF5733;
+    /* color: lightgreen; */
+    border: none;
+    letter-spacing: 3%;
+    transform: scale(1.1);
+    transition: 0.5s;
+    cursor:pointer; 
 }
 
 .navbar-right {
@@ -53,6 +59,7 @@
     cursor: pointer;
 }
 
+
 /* Search icon */
 .navbar-search-icon {
     position: relative;
@@ -80,6 +87,14 @@
     z-index: 1;
 }
 
+.navbar-profile img:hover{
+    border: none;
+    letter-spacing: 3%;
+    transform: scale(1.2);
+    transition: 0.5s;
+    cursor:pointer;
+} 
+
 .navbar-profile:hover .nav-profile-dropdown {
     display: flex;
     flex-direction: column;
@@ -90,6 +105,15 @@
     border: 1px solid tomato;
     outline: 2px solid white;
     list-style: none;
+    
+}
+
+.navbar-search-icon img:hover {
+    border: none;
+    letter-spacing: 3%;
+    transform: scale(1.2);
+    transition: 0.5s;
+    cursor:pointer;
 }
 
 .nav-profile-dropdown li {
@@ -105,6 +129,12 @@
 
 .nav-profile-dropdown li:hover {
     color: tomato;
+    /* color: lightgreen;
+    border: none; */
+    letter-spacing: 3%;
+    transform: scale(1.1);
+    transition: 0.5s;
+    cursor:pointer;
 }
 
 /* Responsive design */

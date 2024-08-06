@@ -2,6 +2,9 @@ import React, {useContext} from 'react'
 import './Cart.css'
 import {StoreContext} from '../../context/StoreContext'
 import { useNavigate } from 'react-router-dom';
+import { FaTrashAlt } from "react-icons/fa";
+
+
 
 const Cart = () => {
 
@@ -34,7 +37,8 @@ const navigate = useNavigate();
                     <p>${item.price}</p>
                     <p>{cartItems[item._id]}</p>
                     <p>${item.price*cartItems[item._id]}</p>
-                    <p onClick={()=>removeFromCart(item._id)} className='cross'>x</p>
+                    <button onClick={()=>removeFromCart(item._id)} className='cross'><FaTrashAlt />
+                    </button>
                   </div>
                   <hr/>
                   </div>
@@ -66,9 +70,9 @@ const navigate = useNavigate();
         </div>
         <div className="cart-promocode">
           <div>
-            <p>If you have a promo code, Enter it here</p>
+            <h4 className='cart-promocode-line'>Enter promocode to get massive discounts !</h4>
             <div className='cart-promocode-input'>
-                 <input type="text" placeholder='promo code' />
+                 <input type="text" placeholder='Promocode ...' />
                   <button>Submit</button>
             </div>
           </div>
