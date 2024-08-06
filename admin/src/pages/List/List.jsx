@@ -38,8 +38,8 @@ const List = ({url}) => {
   }, [])
 
   return (
-    <div className='list add flex-col'>
-      <p>All Foods List</p>
+    <div className='list-add flex-col'>
+      <p>All Oils List</p>
       <div className="list-table">
         <div className="list-table-format title">
           <b>Image</b>
@@ -55,7 +55,7 @@ const List = ({url}) => {
               <p>{item.name}</p>
               <p>{item.category}</p>
               <p>${item.price}</p>
-              <p onClick={()=>removeFood(item._id)} className='cursor'>X</p>
+              <p onClick={()=>removeFood(item._id)} ><button className='Delete-btn'>Delete</button></p>
             </div>
            )
         })}
