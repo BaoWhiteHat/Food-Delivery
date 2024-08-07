@@ -16,4 +16,4 @@ export const assets ={
     list_icon
 }
 
-export const url = 'https://food-delivery-dbcb.onrender.com'
+export const url = 'https://food-delivery-dbcb.onrender.com/'
