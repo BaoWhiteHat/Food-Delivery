@@ -24,6 +24,7 @@ const Orders = ({ url }) => {
     }
   };
 
+<<<<<<< Updated upstream
   // Handle status change
   const statusHandler = async (event, orderId) => {
     const newStatus = event.target.value;
@@ -53,6 +54,11 @@ const Orders = ({ url }) => {
 
   // Fetch orders on component mount
   useEffect(() => {
+=======
+  
+
+  useEffect(()=>{
+>>>>>>> Stashed changes
     fetchAllOrders();
   }, []);
 
