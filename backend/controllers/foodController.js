@@ -1,5 +1,6 @@
 import foodModel from "../models/foodModel.js";
 import fs from "fs";
+import cloudinary from "../config/image.js";
 
 
 // add food item
@@ -16,7 +17,7 @@ const addFood = async (req, res) => {
     })
     try {
         await food.save();
-        res.json({success:true, message:"Food Added"})
+        res.json({ success: true, message: 'Image uploaded successfully', url: req.body.imageUrl });
     } catch (error) {
         console.log(error)
         res.json({success:false, message:"Error"})
@@ -48,6 +49,22 @@ const removeFood = async(req, res) => {
         res.json({success:false, message:"Error"}) 
     }
 }
+const getImage = async(req, res,) => {
+    try {
+        const publicId = req.params.publicId;
+        const options = {
+            width: 200,
+            height: 200,
+            crop: 'fill'
+        };
+        const imageUrl = cloudinary.url(publicId, options);
+        res.status(200).json({ success: true, url: imageUrl });
+    
+        } catch (error) {
+            console.error('Error in getImage:', error);
+            res.status(500).json({ success: false, message: 'Server error', error });
+        }
+    }
 
-export {addFood, listFood , removeFood}
+export {addFood, listFood , removeFood, getImage}
 
