@@ -50,3 +50,12 @@ const removeFood = async(req, res) => {
 }
 
 export {addFood, listFood , removeFood}
+
+// get image
+const getImage = (req, res) => {
+    const imageName = req.params.imageName;
+    const imagePath = path.join(__dirname, '..', 'uploads', imageName);
+    res.sendFile(imagePath);
+}
+
+export { addFood, listFood, removeFood, getImage }
