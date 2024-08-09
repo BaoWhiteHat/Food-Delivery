@@ -1,3 +1,4 @@
+// backend/controllers/userController.js
 import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
@@ -29,9 +30,9 @@ const loginUser = async (req, res) => {
 };
 
 const createToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET);
+    const secretKey = "random#secret"; // Đặt trực tiếp secret key ở đây
+    return jwt.sign({ id }, secretKey);
 };
-
 
 // register user
 const registerUser = async (req,res) => {
