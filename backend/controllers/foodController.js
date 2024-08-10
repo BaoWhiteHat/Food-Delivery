@@ -1,55 +1,52 @@
+// backend/controllers/foodController.js
 import foodModel from "../models/foodModel.js";
-import fs from "fs";
-import cloudinary from "../config/image.js";
 
-
-// add food item
+// Thêm món ăn mới
 const addFood = async (req, res) => {
-
-    let image_filename = `${req.file.filename}`;
-
     const food = new foodModel({
         name: req.body.name,
         description: req.body.description,
         price: req.body.price,
         category: req.body.category,
-        image: image_filename
-    })
+        image: req.body.imageUrl // Sử dụng URL của hình ảnh từ Cloudinary
+    });
     try {
         await food.save();
-        res.json({ success: true, message: 'Image uploaded successfully', url: req.body.imageUrl });
+        res.json({ success: true, message: 'Food item added successfully', data: food });
     } catch (error) {
-        console.log(error)
-        res.json({success:false, message:"Error"})
+        console.log(error);
+        res.json({ success: false, message: 'Error' });
     }
-}
+};
 
-// all list food
+// Danh sách tất cả món ăn
 const listFood = async (req, res) => {
     try {
         const foods = await foodModel.find({});
-        res.json({success:true, data: foods})
+        res.json({ success: true, data: foods });
     } catch (error) {
         console.log(error);
-        res.json({success:false, message:"Error"})
+        res.json({ success: false, message: "Error" });
     }
-}
+};
 
-
-// remove food item
-const removeFood = async(req, res) => {
+// Xóa món ăn
+const removeFood = async (req, res) => {
     try {
         const food = await foodModel.findById(req.body.id);
-        fs.unlink(`uploads/${food.image}`, ()=>{})
-
+        if (!food) {
+            return res.status(404).json({ success: false, message: "Food item not found" });
+        }
         await foodModel.findByIdAndDelete(req.body.id);
-        res.json({success:true, message:"Food Removed"})
+        res.json({ success: true, message: "Food removed" });
     } catch (error) {
         console.log(error);
-        res.json({success:false, message:"Error"}) 
+        res.json({ success: false, message: "Error" });
     }
-}
-const getImage = async(req, res,) => {
+};
+
+// Lấy hình ảnh từ Cloudinary
+const getImage = async (req, res) => {
     try {
         const publicId = req.params.publicId;
         const options = {
@@ -59,12 +56,10 @@ const getImage = async(req, res,) => {
         };
         const imageUrl = cloudinary.url(publicId, options);
         res.status(200).json({ success: true, url: imageUrl });
-    
-        } catch (error) {
-            console.error('Error in getImage:', error);
-            res.status(500).json({ success: false, message: 'Server error', error });
-        }
+    } catch (error) {
+        console.error('Error in getImage:', error);
+        res.status(500).json({ success: false, message: 'Server error', error });
     }
+};
 
-export {addFood, listFood , removeFood, getImage}
-
+export { addFood, listFood, removeFood, getImage };

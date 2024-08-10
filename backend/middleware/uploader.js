@@ -1,34 +1,40 @@
-import { v2 as cloudinary } from 'cloudinary'; // Import Cloudinary v2
-import streamifier from 'streamifier'; // Import streamifier
+// backend/middleware/uploader.js
+import cloudinary from '../config/image.js';
+import streamifier from 'streamifier';
 
-const uploadImageToCloudinary = async (req, res, next) => {
-  try {
-    const { file } = req;
-    
-    if (!file) {
-      return res.status(400).json({ success: false, message: 'No file uploaded' });
+const uploadImageToCloudinary = (req, res, next) => {
+    if (!req.file) {
+        return res.status(400).json({ success: false, message: 'No file uploaded' });
     }
 
-    const uploadStream = cloudinary.uploader.upload_stream(
-      {folder: 'Test' },
-      (error, result) => {
-        if (error) {
-          console.error('Cloudinary Upload Error:', error);
-          return res.status(500).json({ success: false, message: 'Cloudinary upload failed', error });
+    // Debugging output
+    console.log('Cloudinary Config:', cloudinary.config());
+
+    const streamUpload = (req) => {
+        return new Promise((resolve, reject) => {
+            const stream = cloudinary.uploader.upload_stream((error, result) => {
+                if (result) {
+                    resolve(result);
+                } else {
+                    reject(error);
+                }
+            });
+            streamifier.createReadStream(req.file.buffer).pipe(stream);
+        });
+    };
+
+    async function upload(req) {
+        try {
+            const result = await streamUpload(req);
+            req.body.imageUrl = result.secure_url; // Lưu URL của hình ảnh vào req.body
+            next();
+        } catch (error) {
+            console.error('Error uploading image:', error);
+            res.status(500).json({ success: false, message: 'Error uploading image' });
         }
+    }
 
-        req.body.imageUrl = result.secure_url; // Set the image URL in the request body
-        next(); // Continue to the next middleware or route handler
-      }
-    );
-
-    // Convert file buffer to stream and pipe it to Cloudinary
-    streamifier.createReadStream(file.buffer).pipe(uploadStream);
-
-  } catch (error) {
-    console.error('Error in uploadImageToCloudinary middleware:', error);
-    res.status(500).json({ success: false, message: 'Server error', error });
-  }
+    upload(req);
 };
 
 export default uploadImageToCloudinary;
