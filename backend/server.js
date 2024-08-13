@@ -8,6 +8,8 @@ import cartRouter from './routes/cartRoute.js';
 import orderRouter from './routes/orderRoute.js';
 import 'dotenv/config';
 
+
+
 // Cấu hình ứng dụng
 const app = express();
 const port = 4000;
@@ -31,5 +33,10 @@ app.get("/", (req, res) => {
 
 // Khởi động server
 app.listen(port, () => {
-    console.log(`Server started on http://localhost:${port}`);
+    if(process.env.NODE_ENV === 'production') {
+        console.log(`Server started on ${process.env.HOST}`);
+    }
+    else {
+        console.log(`Server started on http://localhost:${port}`)
+    }
 });
