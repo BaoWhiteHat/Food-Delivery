@@ -21,16 +21,25 @@ const Footer = () => {
     <div className='footer' id='footer'>
       <div className='footer-content'>
         <div className='footer-content-left'>
-          <img src={assets.logo} alt="Logo" />
-          <p>
-          Sua xe anh Tuan is your trusted destination for all your motorbike parts needs. 
+          {/* <img src={assets.logo1} alt="Logo" /> */}
+          
+          <h1>Sua xe anh Tuan</h1> <p> is your trusted destination for all your motorbike parts needs. 
           With our expertise and commitment to customer satisfaction, we ensure you find the perfect parts to suit your motorcycle. 
           </p>
+
           <div className="footer-social-icons">
-            <img href="https://www.facebook.com/profile.php?id=100030964275189" src={assets.facebook_icon} alt="Facebook" />
-            <img href="#" src={assets.twitter_icon} alt="Twitter" />
-            <img href="https://www.linkedin.com/in/qu%E1%BB%91c-b%E1%BA%A3o-l%C3%AA-345535292/" src={assets.linkedin_icon} alt="LinkedIn" />
-          </div>
+    <a href="https://www.facebook.com/profile.php?id=100030964275189" target="_blank" rel="noopener noreferrer">
+        <img src={assets.facebook_icon} alt="Facebook" />
+    </a>
+    <a href="https://x.com/?lang=vi" target="_blank" rel="noopener noreferrer">
+        <img src={assets.twitter_icon} alt="Twitter" />
+    </a>
+    <a href="https://www.linkedin.com/in/qu%E1%BB%91c-b%E1%BA%A3o-l%C3%AA-345535292/" target="_blank" rel="noopener noreferrer">
+        <img src={assets.linkedin_icon} alt="LinkedIn" />
+            </a>
+            
+</div>
+
         </div>
 
         <div className="footer-content-center">

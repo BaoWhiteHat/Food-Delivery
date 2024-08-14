@@ -11,8 +11,14 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 foodRouter.post("/add", upload.single('image'), uploadImageToCloudinary, addFood);
+
 foodRouter.get("/list", listFood);
+
 foodRouter.post("/remove", removeFood);
+
 foodRouter.get("/image/:publicId", getImage);
+
+
+
 
 export default foodRouter;

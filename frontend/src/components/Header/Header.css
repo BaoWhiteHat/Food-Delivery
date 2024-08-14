@@ -20,7 +20,7 @@
 
 .header-contents h2{
     font-weight: 500;
-    color: white;
+    color: #7dd3f6;
     font-size:max(4.5vw, 22px);
 }
 
@@ -37,6 +37,12 @@
     background-color: white;
     font-size: max(1vw, 13px);
     border-radius: 50px;
+    cursor: pointer;
+}
+
+.header-contents button:hover{
+    background-color: lightcoral;
+    color: white;
 }
 
 @media (max-width: 1050px){

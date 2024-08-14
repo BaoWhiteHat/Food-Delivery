@@ -20,7 +20,7 @@
 }
 
 .navbar a:hover {
-    color: #FF5733;
+    color: blue;
     /* color: lightgreen; */
     border: none;
     letter-spacing: 3%;
@@ -30,9 +30,10 @@
 }
 
 .navbar-right {
-    display: flex;
-    align-items: center;
+    display: flex; 
+    /* align-items: center; */
     gap: 40px;
+    margin-left: 40%;
 }
 
 .navbar button {
